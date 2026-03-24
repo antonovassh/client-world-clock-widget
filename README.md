@@ -5,6 +5,8 @@ A simple standalone Angular component for **Creatio Freedom UI** that displays t
 ## Purpose
 The widget helps managers identify the best time to contact a client by visualizing their current time zone and work status.
 
+<img width="819" height="191" alt="image" src="https://github.com/user-attachments/assets/4c3f69f7-1621-4f85-8bac-bd6ef0c00c55" />
+
 ## Key Functionality
 * **Real-time Clock:** Displays the current time in the client's location.
 * **Availability Status:** Simple indicators for "Working Hours", "Evening", and "Night".
@@ -21,5 +23,4 @@ The widget helps managers identify the best time to contact a client by visualiz
 
 ---
 *Created as a functional enhancement for the Creatio Freedom UI ecosystem.*
-<img width="819" height="191" alt="image" src="https://github.com/user-attachments/assets/4c3f69f7-1621-4f85-8bac-bd6ef0c00c55" />
 
