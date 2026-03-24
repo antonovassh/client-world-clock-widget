@@ -106,7 +106,7 @@ export class ClientWorldClockWidgetComponent implements OnInit, OnDestroy {
     if (hour >= 9 && hour <= 17) {
       return {
         label: 'Business hours',
-        color: '#FFE566',
+        color: '#c5a572',
         icon: '☀️',
         class: 'day',
       };
@@ -114,14 +114,14 @@ export class ClientWorldClockWidgetComponent implements OnInit, OnDestroy {
     if (hour >= 18 && hour <= 21) {
       return {
         label: 'After hours',
-        color: '#FFB86C',
+        color: '#b8956a',
         icon: '🌇',
         class: 'evening',
       };
     }
     return {
       label: 'Night',
-      color: '#B8C5FF',
+      color: '#a78bca',
       icon: '🌙',
       class: 'night',
     };
