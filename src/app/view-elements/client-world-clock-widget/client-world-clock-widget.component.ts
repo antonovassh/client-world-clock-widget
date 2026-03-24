@@ -4,7 +4,9 @@ import {
   Input,
   OnDestroy,
   OnInit,
+  ViewEncapsulation,
 } from '@angular/core';
+import { CrtViewElement } from '@creatio-devkit/common';
 import { ClientClockStatusConfig } from './types';
 
 /** Creatio city display names → IANA time zone IDs. */
@@ -21,12 +23,17 @@ const CITY_TIMEZONE_MAP: Readonly<Record<string, string>> = {
 
 const DEFAULT_TIMEZONE = 'UTC';
 
+@CrtViewElement({
+  selector: 'usr-client-world-clock-widget',
+  type: 'usr.ClientWorldClockWidget',
+})
 @Component({
   selector: 'usr-client-world-clock-widget',
   standalone: true,
   imports: [CommonModule],
   templateUrl: './client-world-clock-widget.component.html',
   styleUrls: ['./client-world-clock-widget.component.scss'],
+  encapsulation: ViewEncapsulation.ShadowDom,
 })
 export class ClientWorldClockWidgetComponent implements OnInit, OnDestroy {
   @Input() cityName = '';
