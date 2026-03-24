@@ -1,0 +1,30 @@
+<div
+  class="cwc-widget"
+  [ngClass]="status.class"
+>
+  <header class="cwc-widget__header">
+    <span class="cwc-widget__location-icon" aria-hidden="true">📍</span>
+    <span class="cwc-widget__city" *ngIf="cityName; else noCity">
+      {{ cityName }}
+    </span>
+    <ng-template #noCity>
+      <span class="cwc-widget__city cwc-widget__city--muted">—</span>
+    </ng-template>
+  </header>
+
+  <div class="cwc-widget__time-row">
+    <time class="cwc-widget__time" [attr.datetime]="displayTime">
+      {{ displayTime }}
+    </time>
+    <span class="cwc-widget__status-icon" aria-hidden="true">{{ status.icon }}</span>
+  </div>
+
+  <div class="cwc-widget__footer">
+    <span
+      class="cwc-widget__badge"
+      [style.--badge-accent]="status.color"
+    >
+      {{ status.label }}
+    </span>
+  </div>
+</div>
