@@ -8,6 +8,11 @@
   <link rel="icon" type="image/x-icon" href="favicon.ico">
 </head>
 <body>
-  <usr-client-world-clock-widget city-name="Kyiv"></usr-client-world-clock-widget>
+  <!-- preview-mode only for local ng serve; in Creatio leave unset (auto) -->
+  <div style="display:flex;gap:16px;flex-wrap:wrap;padding:24px;align-items:flex-start;background:#0c0e12;min-height:100vh;box-sizing:border-box;">
+    <usr-client-world-clock-widget city-name="Kyiv" preview-mode="day"></usr-client-world-clock-widget>
+    <usr-client-world-clock-widget city-name="Kyiv" preview-mode="evening"></usr-client-world-clock-widget>
+    <usr-client-world-clock-widget city-name="Kyiv" preview-mode="night"></usr-client-world-clock-widget>
+  </div>
 </body>
 </html>

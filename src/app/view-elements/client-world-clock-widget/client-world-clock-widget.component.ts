@@ -23,6 +23,9 @@ const CITY_TIMEZONE_MAP: Readonly<Record<string, string>> = {
 
 const DEFAULT_TIMEZONE = 'UTC';
 
+/** When set (e.g. on local index.html), forces visual day/evening/night regardless of real hour. Omit in Creatio. */
+type ClientWorldClockPreviewMode = 'auto' | 'day' | 'evening' | 'night';
+
 @CrtViewElement({
   selector: 'usr-client-world-clock-widget',
   type: 'usr.ClientWorldClockWidget',
@@ -37,6 +40,8 @@ const DEFAULT_TIMEZONE = 'UTC';
 })
 export class ClientWorldClockWidgetComponent implements OnInit, OnDestroy {
   @Input() cityName = '';
+
+  @Input() previewMode: ClientWorldClockPreviewMode = 'auto';
 
   /** Current local time for the client time zone (HH:mm:ss). */
   displayTime = '00:00:00';
@@ -98,8 +103,23 @@ export class ClientWorldClockWidgetComponent implements OnInit, OnDestroy {
   private refreshDerivedState(): void {
     this.timeZone = this.resolveTimeZone(this.cityName);
     this.displayTime = this.formatTimeInTimeZone(this.timeZone);
-    const hour = this.getHourInTimeZone(this.timeZone);
+    const hour =
+      this.previewMode !== 'auto'
+        ? this.hourForPreviewMode(this.previewMode)
+        : this.getHourInTimeZone(this.timeZone);
     this.status = this.getStatusForLocalHour(hour);
+  }
+
+  /** Representative local hours for each visual mode (matches buildStatusForHour ranges). */
+  private hourForPreviewMode(mode: Exclude<ClientWorldClockPreviewMode, 'auto'>): number {
+    switch (mode) {
+      case 'day':
+        return 12;
+      case 'evening':
+        return 19;
+      case 'night':
+        return 2;
+    }
   }
 
   private buildStatusForHour(hour: number): ClientClockStatusConfig {
@@ -114,7 +134,7 @@ export class ClientWorldClockWidgetComponent implements OnInit, OnDestroy {
     if (hour >= 18 && hour <= 21) {
       return {
         label: 'After hours',
-        color: '#b8956a',
+        color: '#e8a84c',
         icon: '🌇',
         class: 'evening',
       };
