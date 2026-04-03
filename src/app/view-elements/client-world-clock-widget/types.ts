@@ -1,3 +1,6 @@
+/** When set (e.g. in local index.html), forces visual day/evening/night. In Creatio omit for real time. */
+export type ClientWorldClockPreviewMode = 'auto' | 'day' | 'evening' | 'night';
+
 /** Display configuration for the time-of-day status (business / evening / night). */
 export interface ClientClockStatusConfig {
   label: string;

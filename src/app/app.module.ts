@@ -1,6 +1,6 @@
 import {DoBootstrap, Injector, NgModule, ProviderToken} from '@angular/core';
 import {createCustomElement} from '@angular/elements';
-import { BrowserModule } from '@angular/platform-browser';
+import {BrowserModule} from '@angular/platform-browser';
 import {bootstrapCrtModule, CrtModule} from '@creatio-devkit/common';
 import {ClientWorldClockWidgetComponent} from './view-elements/client-world-clock-widget/client-world-clock-widget.component';
 
@@ -8,7 +8,8 @@ import {ClientWorldClockWidgetComponent} from './view-elements/client-world-cloc
   viewElements: [ClientWorldClockWidgetComponent],
 })
 @NgModule({
-  imports: [BrowserModule, ClientWorldClockWidgetComponent],
+  declarations: [ClientWorldClockWidgetComponent],
+  imports: [BrowserModule],
   providers: [],
 })
 export class AppModule implements DoBootstrap {

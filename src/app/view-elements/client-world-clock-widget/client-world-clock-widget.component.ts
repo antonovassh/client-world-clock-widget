@@ -1,13 +1,11 @@
-import { CommonModule } from '@angular/common';
 import {
   Component,
   Input,
   OnDestroy,
   OnInit,
-  ViewEncapsulation,
 } from '@angular/core';
-import { CrtViewElement } from '@creatio-devkit/common';
-import { ClientClockStatusConfig } from './types';
+import { CrtInput, CrtViewElement } from '@creatio-devkit/common';
+import { ClientClockStatusConfig, ClientWorldClockPreviewMode } from './types';
 
 /** Creatio city display names → IANA time zone IDs. */
 const CITY_TIMEZONE_MAP: Readonly<Record<string, string>> = {
@@ -23,25 +21,23 @@ const CITY_TIMEZONE_MAP: Readonly<Record<string, string>> = {
 
 const DEFAULT_TIMEZONE = 'UTC';
 
-/** When set (e.g. on local index.html), forces visual day/evening/night regardless of real hour. Omit in Creatio. */
-type ClientWorldClockPreviewMode = 'auto' | 'day' | 'evening' | 'night';
-
+@Component({
+  selector: 'usr-client-world-clock-widget',
+  templateUrl: './client-world-clock-widget.component.html',
+  styleUrls: ['./client-world-clock-widget.component.scss'],
+})
 @CrtViewElement({
   selector: 'usr-client-world-clock-widget',
   type: 'usr.ClientWorldClockWidget',
 })
-@Component({
-  selector: 'usr-client-world-clock-widget',
-  standalone: true,
-  imports: [CommonModule],
-  templateUrl: './client-world-clock-widget.component.html',
-  styleUrls: ['./client-world-clock-widget.component.scss'],
-  encapsulation: ViewEncapsulation.ShadowDom,
-})
 export class ClientWorldClockWidgetComponent implements OnInit, OnDestroy {
-  @Input() cityName = '';
+  @Input()
+  @CrtInput()
+  cityName = '';
 
-  @Input() previewMode: ClientWorldClockPreviewMode = 'auto';
+  @Input()
+  @CrtInput()
+  previewMode: ClientWorldClockPreviewMode = 'auto';
 
   /** Current local time for the client time zone (HH:mm:ss). */
   displayTime = '00:00:00';
