@@ -1,6 +1,6 @@
 # Client World Clock Widget
 
-An Angular **custom element** (view element) for **Creatio Freedom UI** that shows the client’s local time and a simple day / evening / night status from their city name.
+An Angular component for **Creatio Freedom UI** that shows the client’s local time and a simple day / evening / night status from their city name.
 
 ## Purpose
 
@@ -28,15 +28,6 @@ Helps managers choose a good time to reach out by showing the contact’s curren
 | Custom element tag | `usr-client-world-clock-widget` |
 | Inputs (`@Input` + `@CrtInput`) | `cityName` — display name of the city (must match the widget’s internal map, e.g. Kyiv, London). `previewMode` — optional: `auto` (default), `day`, `evening`, `night` — useful for local `ng serve` / demos; in production leave `auto` so status follows real time. |
 
-## Local development
-
-```bash
-npm install
-npm start   # ng serve — see src/index.html for example tags
-npm run build
-```
-
-Do not commit **`dist/`** or **`node_modules/`**; they are listed in `.gitignore`.
 
 ## Deploy & use in Creatio
 
