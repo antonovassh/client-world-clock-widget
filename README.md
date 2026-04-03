@@ -14,12 +14,6 @@ Helps managers choose a good time to reach out by showing the contact’s curren
 - **Availability hint** — **Business hours**, **After hours**, or **Night** (with icon and accent), driven by local hour in that zone.
 - **Visual context** — background gradient shifts with the status for quick scanning.
 
-## Technical stack
-
-- **Angular** with **Angular Elements** (`@angular/elements`) — packaged as a custom element for Creatio.
-- **Creatio DevKit** (`@creatio-devkit/common`) — `@CrtViewElement`, `@CrtModule`, `@CrtInput`, `bootstrapCrtModule` (same integration style as other in-house Freedom UI widgets).
-- **Build** — `ngx-build-plus` + **Module Federation** (`webpack.config.js` / `webpack.prod.config.js`). Output goes to `dist/` (ignored by Git; regenerate with `ng build`).
-
 ## Creatio binding
 
 | Mechanism | Detail |
